@@ -1,8 +1,14 @@
 import React from 'react'
-
+import styled from 'styled-components/native'
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 
-const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
+const ResturantCard = styled(Card)`
+  padding: 20px;
+  background-color: ${props => props.theme.colors.brand.muted}
+`
+
+const ResturantCardCover = styled(Card.Cover)`
+`
 
 const ResturantInfoCard = ({ resturant }) => {
   const {
@@ -16,18 +22,18 @@ const ResturantInfoCard = ({ resturant }) => {
   } = resturant
 
   return (
-    <Card style={{}}>
-      <Card.Cover source={{ uri: photos[0] }} />
-      <Card.Title title={name} subtitle={address} left={LeftContent} />
-      <Card.Actions>
-        <Button onPress={() => console.log('hello')}>Cancel</Button>
-        <Button>Ok</Button>
-      </Card.Actions>
+    <ResturantCard style={{}}>
+      <ResturantCardCover source={{ uri: photos[0] }} />
+      {/* <Card.Title title={name} subtitle={address} left={LeftContent} /> */}
+      {/* <Card.Actions> */}
+      {/*   <Button onPress={() => console.log('hello')}>Cancel</Button> */}
+      {/*   <Button>Ok</Button> */}
+      {/* </Card.Actions> */}
       {/* <Card.Content> */}
       {/*   <Title>Card title</Title> */}
       {/*   <Paragraph>Card content</Paragraph> */}
       {/* </Card.Content> */}
-    </Card>
+    </ResturantCard>
   )
 }
 
