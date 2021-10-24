@@ -5,7 +5,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "build:apk": "expo build:android -t apk",
+    "build:app-bundle": "expo build:android -t app-bundle"
   },
   "dependencies": {
     "expo": "~43.0.0",
@@ -14,6 +16,7 @@
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
     "react-native-paper": "^4.9.2",
+    "react-native-svg": "12.1.1",
     "react-native-web": "0.17.1",
     "styled-components": "^5.3.3"
   },

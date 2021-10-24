@@ -20,7 +20,7 @@ export const colors = {
     primary: '',
     secondary: '',
     danger: '',
-    error: '',
+    error: '#EF4444',
     success: '',
     muted: '',
     tertiary: '',
