@@ -1,29 +1,46 @@
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import React, { useContext } from 'react'
 import { FlatList } from 'react-native'
 import { Searchbar } from 'react-native-paper'
 import styled from 'styled-components'
+import SafeArea from '../components/utility/SafeArea'
 import Spacer from '../components/utility/Spacer'
 import ResturantInfoCard from '../features/resturants/componets/ResturantInfoCard'
+import { ResturantContext } from '../services/resturants/resturans.context'
+import { ActivityIndicator, Colors } from 'react-native-paper'
 
 const ResturantCardList = styled(FlatList).attrs({
-  contentContainerStyle: { padding: 12 },
-})``
+  contentContainerStyle: { paddingHorizontal: 12, paddingBottom: 20 },
+})`
+  flex: 1;
+`
+const LoadingContainer = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+`
 
 const Resturants = () => {
+  const resturantContext = useContext(ResturantContext)
+
   return (
-    <SafeAreaView>
+    <SafeArea>
       <Searchbar style={{ marginHorizontal: 12 }} />
       <ResturantCardList
-        data={[{ name: 1 }, { name: 2 }]}
+        data={resturantContext.resturants}
         keyExtractor={(item) => item.name}
-        renderItem={(itemData) => (
-          <Spacer direction='bottom' size={4}>
-            <ResturantInfoCard resturant={{}} />
+        renderItem={({ item }) => (
+          <Spacer direction='top' size={3}>
+            <ResturantInfoCard resturant={item} />
           </Spacer>
         )}
       />
-    </SafeAreaView>
+      {resturantContext.isLoading && (
+        <LoadingContainer>
+          <ActivityIndicator animating={true} color={Colors.orange700} />
+        </LoadingContainer>
+      )}
+    </SafeArea>
   )
 }
 
