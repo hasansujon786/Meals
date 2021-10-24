@@ -3,6 +3,7 @@ import * as React from 'react'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { ThemeProvider } from 'styled-components'
 import RooNavigator from './src/navigators/RootNavigator'
+import { NavigationContainer } from '@react-navigation/native'
 import theme from './src/infrastructure/theme'
 
 export default function Main() {
@@ -10,10 +11,12 @@ export default function Main() {
     <>
       <ThemeProvider theme={theme}>
         <PaperProvider>
-          <RooNavigator />
+          <NavigationContainer>
+            <RooNavigator />
+          </NavigationContainer>
         </PaperProvider>
       </ThemeProvider>
-      <StatusBar style="auto" />
+      <StatusBar style='auto' />
     </>
   )
 }

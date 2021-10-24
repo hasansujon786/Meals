@@ -1,17 +1,18 @@
 import React from 'react'
-import { StyleSheet, View, SafeAreaView, StatusBar, FlatList } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { FlatList } from 'react-native'
 import { Searchbar } from 'react-native-paper'
 import styled from 'styled-components'
-import Spacer from '../components/Spacer'
+import Spacer from '../components/utility/Spacer'
 import ResturantInfoCard from '../features/resturants/componets/ResturantInfoCard'
 
 const ResturantCardList = styled(FlatList).attrs({
   contentContainerStyle: { padding: 12 },
 })``
 
-const Resturant = () => {
+const Resturants = () => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView>
       <Searchbar style={{ marginHorizontal: 12 }} />
       <ResturantCardList
         data={[{ name: 1 }, { name: 2 }]}
@@ -26,11 +27,4 @@ const Resturant = () => {
   )
 }
 
-export default Resturant
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-  },
-})
+export default Resturants

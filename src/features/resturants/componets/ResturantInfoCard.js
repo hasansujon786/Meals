@@ -1,7 +1,7 @@
 import React from 'react'
 import { SvgXml, SvgUri } from 'react-native-svg'
 import starSvg from '../../../../assets/star'
-import Spacer from '../../../components/Spacer'
+import Spacer from '../../../components/utility/Spacer'
 import Text from '../../../components/typography/Text'
 import { ResturantCard, ResturantCardCover, Ratings, Section } from './ResturantInfoCard.styles'
 
