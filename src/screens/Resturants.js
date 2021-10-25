@@ -26,15 +26,17 @@ const Resturants = () => {
   return (
     <SafeArea>
       <Searchbar style={{ marginHorizontal: 12 }} />
-      <ResturantCardList
-        data={resturantContext.resturants}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
-          <Spacer direction='top' size={3}>
-            <ResturantInfoCard resturant={item} />
-          </Spacer>
-        )}
-      />
+      {!resturantContext.isLoading && (
+        <ResturantCardList
+          data={resturantContext.resturants}
+          keyExtractor={(item) => item.name}
+          renderItem={({ item }) => (
+            <Spacer direction='top' size={4}>
+              <ResturantInfoCard resturant={item} />
+            </Spacer>
+          )}
+        />
+      )}
       {resturantContext.isLoading && (
         <LoadingContainer>
           <ActivityIndicator animating={true} color={Colors.orange700} />
