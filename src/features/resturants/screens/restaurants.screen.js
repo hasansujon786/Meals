@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
-import { FlatList } from 'react-native'
-import styled from 'styled-components'
-import SafeArea from '../components/utility/SafeArea'
-import Spacer from '../components/utility/Spacer'
-import ResturantInfoCard from '../features/resturants/componets/ResturantInfoCard'
-import Search from '../features/resturants/componets/search.componenet'
-import { ResturantContext } from '../services/resturants/resturans.context'
+import { FlatList, TouchableOpacity } from 'react-native'
 import { ActivityIndicator, Colors } from 'react-native-paper'
+import styled from 'styled-components'
+
+import SafeArea from '../../../components/utility/SafeArea'
+import Spacer from '../../../components/utility/Spacer'
+import ResturantInfoCard from '../componets/ResturantInfoCard'
+import Search from '../componets/search.componenet'
+import { ResturantContext } from '../../../services/resturants/resturans.context'
 
 const ResturantCardList = styled(FlatList).attrs({
   contentContainerStyle: { paddingHorizontal: 12, paddingBottom: 20 },
@@ -20,7 +21,7 @@ const LoadingContainer = styled.View`
   right: 0;
 `
 
-const Resturants = () => {
+const ResturantsScreen = ({ navigation }) => {
   const resturantContext = useContext(ResturantContext)
 
   return (
@@ -32,7 +33,11 @@ const Resturants = () => {
           keyExtractor={(item) => item.name}
           renderItem={({ item }) => (
             <Spacer direction='top' size={4}>
-              <ResturantInfoCard resturant={item} />
+              <TouchableOpacity
+                onPress={() => navigation.navigate('RestaurantDetail', { restaurant: item })}
+              >
+                <ResturantInfoCard resturant={item} />
+              </TouchableOpacity>
             </Spacer>
           )}
         />
@@ -46,4 +51,4 @@ const Resturants = () => {
   )
 }
 
-export default Resturants
+export default ResturantsScreen

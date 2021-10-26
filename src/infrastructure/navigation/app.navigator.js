@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Resturants from '../screens/Resturants'
+import RestaurantNavigator from './restaurant.navigator'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 
@@ -28,14 +28,15 @@ const createTabScreenOptions = ({ route }) => ({
   headerShown: false,
 })
 
-const RootNavigator = () => {
+const AppNavigator = () => {
   return (
     <Tab.Navigator screenOptions={createTabScreenOptions}>
-      <Tab.Screen name='Resturants' component={Resturants} />
-      <Tab.Screen name='Map' component={Resturants} />
-      <Tab.Screen name='Settings' component={Resturants} />
+      <Tab.Screen name='Resturants' component={RestaurantNavigator} />
+      <Tab.Screen name='Map' component={RestaurantNavigator} />
+      <Tab.Screen name='Settings' component={RestaurantNavigator} />
     </Tab.Navigator>
   )
 }
 
-export default RootNavigator
+export default AppNavigator
+
