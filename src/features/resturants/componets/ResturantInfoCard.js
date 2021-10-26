@@ -10,7 +10,7 @@ const ResturantInfoCard = ({ resturant }) => {
     name = 'Some Resturant',
     icon = 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
     photos = ['https://cdn.cnn.com/cnnnext/dam/assets/140430115517-06-comfort-foods.jpg'],
-    address = 'some resturant address',
+    address = 'Some resturant address',
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
