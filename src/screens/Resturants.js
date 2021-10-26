@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { FlatList } from 'react-native'
-import { Searchbar } from 'react-native-paper'
 import styled from 'styled-components'
 import SafeArea from '../components/utility/SafeArea'
 import Spacer from '../components/utility/Spacer'
 import ResturantInfoCard from '../features/resturants/componets/ResturantInfoCard'
+import Search from '../features/resturants/componets/search.componenet'
 import { ResturantContext } from '../services/resturants/resturans.context'
 import { ActivityIndicator, Colors } from 'react-native-paper'
 
@@ -25,7 +25,7 @@ const Resturants = () => {
 
   return (
     <SafeArea>
-      <Searchbar style={{ marginHorizontal: 12 }} />
+      <Search />
       {!resturantContext.isLoading && (
         <ResturantCardList
           data={resturantContext.resturants}

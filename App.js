@@ -6,17 +6,20 @@ import RooNavigator from './src/navigators/RootNavigator'
 import { NavigationContainer } from '@react-navigation/native'
 import theme from './src/infrastructure/theme'
 import ResturantContextProvider from './src/services/resturants/resturans.context'
+import LocationContextProvider from './src/services/location/location.context.js'
 
 export default function Main() {
   return (
     <>
       <ThemeProvider theme={theme}>
         <PaperProvider>
-          <ResturantContextProvider>
-            <NavigationContainer>
-              <RooNavigator />
-            </NavigationContainer>
-          </ResturantContextProvider>
+          <LocationContextProvider>
+            <ResturantContextProvider>
+              <NavigationContainer>
+                <RooNavigator />
+              </NavigationContainer>
+            </ResturantContextProvider>
+          </LocationContextProvider>
         </PaperProvider>
       </ThemeProvider>
       <StatusBar style='auto' />
