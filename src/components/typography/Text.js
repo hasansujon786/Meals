@@ -35,4 +35,3 @@ const Text = styled.Text`
 `
 
 export default Text
-

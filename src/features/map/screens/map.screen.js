@@ -2,11 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import MapView from 'react-native-maps'
 import { StyleSheet, View, Dimensions } from 'react-native'
 
-import Search from '../componets/search.componenet'
 import { LocationContext } from '../../../services/location/location.context'
+import { ResturantContext } from '../../../services/resturants/resturans.context'
+import Search from '../componets/search.componenet'
+import MapCallout from '../componets/map-callout.component'
 
 const MapScreen = () => {
   const { location } = useContext(LocationContext)
+  const { resturants = [] } = useContext(ResturantContext)
   const [latDelta, setLatDelta] = useState(0)
 
   useEffect(() => {
@@ -26,7 +29,22 @@ const MapScreen = () => {
           latitudeDelta: latDelta,
           longitudeDelta: 0.02,
         }}
-      />
+      >
+        {resturants.map((restaurant) => (
+          <MapView.Marker
+            key={restaurant.name}
+            title={restaurant.name}
+            coordinate={{
+              latitude: restaurant.geometry.location.lat,
+              longitude: restaurant.geometry.location.lng,
+            }}
+          >
+            <MapView.Callout>
+              <MapCallout restaurant={restaurant} />
+            </MapView.Callout>
+          </MapView.Marker>
+        ))}
+      </MapView>
     </View>
   )
 }
