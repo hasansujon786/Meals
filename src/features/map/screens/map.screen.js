@@ -7,7 +7,7 @@ import { ResturantContext } from '../../../services/resturants/resturans.context
 import Search from '../componets/search.componenet'
 import MapCallout from '../componets/map-callout.component'
 
-const MapScreen = () => {
+const MapScreen = ({navigation}) => {
   const { location } = useContext(LocationContext)
   const { resturants = [] } = useContext(ResturantContext)
   const [latDelta, setLatDelta] = useState(0)
@@ -39,7 +39,7 @@ const MapScreen = () => {
               longitude: restaurant.geometry.location.lng,
             }}
           >
-            <MapView.Callout>
+            <MapView.Callout onPress={() => navigation.navigate('RestaurantDetail', { restaurant })}>
               <MapCallout restaurant={restaurant} />
             </MapView.Callout>
           </MapView.Marker>
