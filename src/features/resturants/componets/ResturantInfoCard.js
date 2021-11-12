@@ -1,11 +1,13 @@
 import React from 'react'
 import { SvgXml, SvgUri } from 'react-native-svg'
+
 import starSvg from '../../../../assets/star'
 import Spacer from '../../../components/utility/Spacer'
 import Text from '../../../components/typography/Text'
 import { ResturantCard, ResturantCardCover, Ratings, Section } from './ResturantInfoCard.styles'
+import FavouriteButton from '../../../components/favorites/favourite-button.componetn'
 
-const ResturantInfoCard = ({ resturant }) => {
+const ResturantInfoCard = ({ restaurant }) => {
   const {
     name = 'Some Resturant',
     icon = 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
@@ -15,11 +17,12 @@ const ResturantInfoCard = ({ resturant }) => {
     rating = 4,
     isClosedTemporarily = true,
     placeId,
-  } = resturant
+  } = restaurant
 
   const ratingArr = Array.from(new Array(Math.floor(rating)))
   return (
     <ResturantCard style={{ elevation: 3 }}>
+      <FavouriteButton restaurant={restaurant} />
       <ResturantCardCover source={{ uri: photos[0] }} />
       <Text varient='title'>{name}</Text>
       <Section>

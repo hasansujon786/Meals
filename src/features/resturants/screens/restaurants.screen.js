@@ -33,10 +33,8 @@ const ResturantsScreen = ({ navigation }) => {
           keyExtractor={(item) => item.name}
           renderItem={({ item }) => (
             <Spacer direction='top' size={4}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('RestaurantDetail', { restaurant: item })}
-              >
-                <ResturantInfoCard resturant={item} />
+              <TouchableOpacity onPress={() => navigation.navigate('RestaurantDetail', { restaurant: item })}>
+                <ResturantInfoCard restaurant={item} />
               </TouchableOpacity>
             </Spacer>
           )}
